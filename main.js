@@ -91,16 +91,16 @@ gsap.from(".hero", 2, {
   ease: "power4.inOut",
 });
 
-function sendEmail() {
+const form = document.getElementById("form").addEventListener("submit", (e) => {
+  e.preventDefault();
   let params = {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
     phone: document.getElementById("phone").value,
-    message: document.getElementById("message").value,
   };
-  const serviceId = "service_vxdydr7";
-  const templateId = "template_72z1m0j";
-  const publicKey = "3asQNyRB9dSkbVQ67";
+  const serviceId = "service_d8ol2fc";
+  const templateId = "template_74taox5";
+  const publicKey = "TCgliNVXRk8cGdjwd";
 
   emailjs
     .send(serviceId, templateId, params, publicKey)
@@ -108,9 +108,8 @@ function sendEmail() {
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("phone").value = "";
-      document.getElementById("message").value = "";
       console.log(res);
-      alert("Appointment scheduled!");
+      alert("መልእክቶ በተሳካ ሁኔታ ተልኳል።");
     })
     .catch((err) => console.log(err));
-}
+});
